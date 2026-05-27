@@ -525,7 +525,7 @@ install_probe() {
     echo -e "    journalctl -u ${SERVICE_NAME} -f  # 实时日志"
     echo ""
     echo -e "  ${CYAN}卸载命令:${NC}"
-    echo -e "    bash $0 uninstall"
+    echo -e "    systemctl stop cf-probe; systemctl disable cf-probe; pkill -9 -f cf-probe.sh 2>/dev/null || true; rm -f /etc/systemd/system/cf-probe.service /usr/local/bin/cf-probe.sh /var/log/cf-probe.log; systemctl daemon-reload"
     echo ""
 }
 
